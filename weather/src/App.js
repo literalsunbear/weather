@@ -10,18 +10,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sunny: true,
+      sunny: false,
       cloudy: false,
       rainy: false,
       snowy: false
-    }
+    };
+    this.handleTestClick = this.handleTestClick.bind(this);
+  }
+
+  handleTestClick = () => {
+    this.setState({sunny: true});
   }
 
   render() {
     return (
-      <div class='App'>
+      <div className='App'>
 
-        <div class='effects-container'>
+        <div className='effects-container'>
           <Sunny sunny={this.state.sunny}/>
           <Cloudy cloudy={this.state.cloudy}/>
           <Rainy rainy={this.state.rainy}/>
@@ -31,17 +36,17 @@ class App extends React.Component {
         <div id="search-container">
           <input id="search-box"></input>
           <button 
-          type="button">search</button>
+          type="submit"
+          onClick={this.handleTestClick}>search</button>
         </div>
 
-        <div class='results-container'>
+        <div className='results-container'>
           <Results />
         </div>
 
       </div>
     )
   }
-
 }
 
 export default App;

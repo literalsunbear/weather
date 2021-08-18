@@ -9,7 +9,7 @@ class Snowy extends React.Component {
     render() {
         return (
             <div
-            class="screen-effect display-none">this is the Snowy div</div>
+            className="screen-effect display-none">this is the Snowy div</div>
         )
     }
 }

@@ -9,7 +9,7 @@ class Cloudy extends React.Component {
     render() {
         return (
             <div
-            class="screen-effect display-none">this is the Cloudy div</div>
+            className="screen-effect display-none">this is the Cloudy div</div>
         )
     }
 }

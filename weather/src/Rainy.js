@@ -9,7 +9,7 @@ class Rainy extends React.Component {
     render() {
         return (
             <div
-            class="screen-effect display-none">this is the Rainy div</div>
+            className="screen-effect display-none">this is the Rainy div</div>
         )
     }
 }
