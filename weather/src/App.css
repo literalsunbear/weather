@@ -1,0 +1,68 @@
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* DISPLAY/BLOCK ==================== */
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
+}
+.App {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background: black;
+}
+
+/* SEARCH CONTAINER ================= */
+#search-container {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 33%;
+  transform: translate(-50%, -33%);
+}
+#search-container input {
+  border: none;
+  outline: none;
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 4px solid white;
+  font-size: 4em;
+  color: white;
+}
+
+/* EFFECTS CONTAINER ================ */
+.screen-effect {
+  position: absolute;
+  left: 0;
+  bottom: 100px;
+
+  border: 2px dotted blue;
+}
+/* sunny screen effect */
+#sunny-screen-effect {
+  filter: brightness(75%);
+}
+
+/* RESULTS CONTAINER ================ */
+.results-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  height: 100px;
+  width: 100%;
+
+  color: purple;
+  border: 2px dotted red;
+}
