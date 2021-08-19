@@ -14,6 +14,7 @@ class Snowy extends React.Component {
             <div
             className={screenEffectName}>
                 <video
+                className="screen-effect-video"
                 id="snowy-screen-effect"
                 src={video}
                 type="video/mp4"

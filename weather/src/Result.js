@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Results extends React.Component {
+class Result extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -8,9 +8,10 @@ class Results extends React.Component {
 
     render() {
         return (
-            <div>this is the results div</div>
+            <div
+            className="result-container">this is the result div</div>
         )
     }
 }
 
-export default Results;
+export default Result;

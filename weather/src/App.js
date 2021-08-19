@@ -4,7 +4,8 @@ import Sunny from './Sunny';
 import Cloudy from './Cloudy';
 import Rainy from './Rainy';
 import Snowy from './Snowy';
-import Results from './Results';
+import Forecast from './Forecast';
+import Result from './Result';
 
 class App extends React.Component {
   constructor(props) {
@@ -40,8 +41,12 @@ class App extends React.Component {
           onClick={this.handleTestClick}>search</button>
         </div>
 
-        <div className='results-container'>
-          <Results />
+        <div id="result-container">
+          <Result />
+        </div>
+
+        <div className='forecast-container'>
+          <Forecast />
         </div>
 
       </div>

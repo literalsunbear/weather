@@ -15,6 +15,7 @@ class Cloudy extends React.Component {
             className={screenEffectName}>
                 <video
                 id="cloudy-screen-effect"
+                className="screen-effect-video"
                 src={video}
                 type="video/mp4"
                 autoPlay

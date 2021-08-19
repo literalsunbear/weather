@@ -26,8 +26,8 @@ body {
   position: absolute;
   z-index: 3;
   left: 50%;
-  top: 33%;
-  transform: translate(-50%, -33%);
+  top: 10%;
+  transform: translate(-50%, -10%);
 }
 #search-container input {
   border: none;
@@ -45,25 +45,35 @@ body {
 .screen-effect {
   position: absolute;
   left: 0;
-  bottom: 100px;
+  bottom: 200px;
 
   border: 2px dotted blue;
 }
 /* sunny screen effect */
 #sunny-screen-effect {
   filter: brightness(75%);
+}
+
+/* RESULT CONTAINER ================== */
+.result-container {
+  position: absolute;
+  left: 0;
+  bottom: 200px;
+  width: 100%;
+  height: 300px;
+  border: 2px dotted red;
 
 }
 
-/* RESULTS CONTAINER ================ */
-.results-container {
+/* FORECAST CONTAINER ================ */
+.forecast-container {
   position: absolute;
   left: 0;
   bottom: 0;
 
-  height: 100px;
+  height: 200px;
   width: 100%;
 
-  color: purple;
-  border: 2px dotted red;
+  color: green;
+  border: 2px dotted green;
 }

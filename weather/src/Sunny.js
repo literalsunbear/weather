@@ -15,6 +15,7 @@ class Sunny extends React.Component {
             className={screenEffectName}>
                 <video
                 id="sunny-screen-effect"
+                className="screen-effect-video"
                 src={video}
                 type="video/mp4"
                 autoPlay
