@@ -27,8 +27,14 @@ class App extends React.Component {
     this.setState({inputValue: event.target.value})
   }
 
-  handleTestClick = (event) => {
-    this.setState({rainy: true});
+  handleTestClick = async (event) => {
+    this.setState({test: this.state.inputValue});
+
+    const response = 
+      await fetch('api.openweathermap.org/data/2.5/weather?q=London&appid=486715e03ac41999dee9a7594ce38c95', {mode: 'no-cors'});
+    console.log(await response);
+    console.log(await response.json());
+
     this.setState({test: this.state.inputValue});
     this.setState({inputValue: ''})
   }
