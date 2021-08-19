@@ -13,6 +13,14 @@ class App extends React.Component {
     this.state = {
       inputValue: '',
       data: [],
+      current: {
+        location: '',
+        description: '',
+        temp: '',
+        max: '',
+        min: '',
+        humidity: ''
+      },
       //for testing purposes//
       location: '',
       temp: '',
@@ -45,6 +53,8 @@ class App extends React.Component {
     this.setState({data: [await response.json()]});
 
     // convert all this to an object that can be updated in state
+
+
     const location = this.state.data[0].name;
     const description = this.state.data[0].weather[0].description;
     const temp = this.state.data[0].main.temp;
