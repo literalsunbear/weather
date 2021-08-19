@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       sunny: false,
-      cloudy: false,
+      cloudy: true,
       rainy: false,
       snowy: false
     };
@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   handleTestClick = () => {
-    this.setState({sunny: true});
+    this.setState({snowy: true});
   }
 
   render() {

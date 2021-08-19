@@ -1,4 +1,5 @@
 import React from 'react';
+import video from './images/snow_video_compressed.mp4';
 
 class Snowy extends React.Component {
     constructor(props) {
@@ -7,9 +8,20 @@ class Snowy extends React.Component {
     }
 
     render() {
+        const screenEffectName = this.props.snowy ? "screen-effect display-block" : "screen-effect display-none";
+
         return (
             <div
-            className="screen-effect display-none">this is the Snowy div</div>
+            className={screenEffectName}>
+                <video
+                id="snowy-screen-effect"
+                src={video}
+                type="video/mp4"
+                autoPlay
+                loop
+                muted>
+                </video>
+            </div>
         )
     }
 }

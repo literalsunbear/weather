@@ -1,4 +1,5 @@
 import React from 'react';
+import video from './images/clouds_video_compressed.mp4';
 
 class Cloudy extends React.Component {
     constructor(props) {
@@ -7,9 +8,20 @@ class Cloudy extends React.Component {
     }
 
     render() {
+        const screenEffectName = this.props.cloudy ? "screen-effect display-block" : "screen-effect display-none";
+
         return (
             <div
-            className="screen-effect display-none">this is the Cloudy div</div>
+            className={screenEffectName}>
+                <video
+                id="cloudy-screen-effect"
+                src={video}
+                type="video/mp4"
+                autoPlay
+                loop
+                muted>
+                </video>
+            </div>
         )
     }
 }

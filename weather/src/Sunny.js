@@ -11,7 +11,8 @@ class Sunny extends React.Component {
         const screenEffectName = this.props.sunny ? "screen-effect display-block" : "screen-effect display-none";
 
         return (
-            <div className={screenEffectName}>
+            <div 
+            className={screenEffectName}>
                 <video
                 id="sunny-screen-effect"
                 src={video}
@@ -19,7 +20,6 @@ class Sunny extends React.Component {
                 autoPlay
                 loop
                 muted>
-
                 </video>
             </div>
         )
