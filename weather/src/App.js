@@ -12,30 +12,49 @@ class App extends React.Component {
     super(props);
     this.state = {
       inputValue: '',
+      data: [],
       //for testing purposes//
-      test: '',
+      location: '',
+      temp: '',
+      description: '',
+      //*******************//
       sunny: false,
       cloudy: false,
       rainy: false,
       snowy: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleTestClick = this.handleTestClick.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleInputChange = (event) => {
     this.setState({inputValue: event.target.value})
   }
 
-  handleTestClick = async (event) => {
-    this.setState({test: this.state.inputValue});
+  handleSearch = async (event) => {
+    // use try/catch to handle errors //
+    //****************************** */
+
+    const key = '486715e03ac41999dee9a7594ce38c95';
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=';
 
     const response = 
-      await fetch('api.openweathermap.org/data/2.5/weather?q=London&appid=486715e03ac41999dee9a7594ce38c95', {mode: 'no-cors'});
-    console.log(await response);
-    console.log(await response.json());
+      await fetch(url + key + '&units=imperial');
+    // console.log(await response);
+    // console.log(await response.json());
+    this.setState({data: [await response.json()]});
 
-    this.setState({test: this.state.inputValue});
+    // convert all this to an object that can be updated in state
+    const location = this.state.data[0].name;
+    const description = this.state.data[0].weather[0].description;
+    const temp = this.state.data[0].main.temp;
+    const max = this.state.data[0].main.temp_max;
+    const min = this.state.data[0].main.temp_min;
+    const humidity = this.state.data[0].main.humidity;
+
+    this.setState({location: location});
+    this.setState({temp: temp});
+    this.setState({description: description})
     this.setState({inputValue: ''})
   }
 
@@ -59,12 +78,14 @@ class App extends React.Component {
           <br></br>
           <button 
           type="submit"
-          onClick={this.handleTestClick}>search</button>
+          onClick={this.handleSearch}>search</button>
         </div>
 
         <div id="result-container">
           <Result 
-          test={this.state.test}/>
+          location={this.state.location}
+          temp={this.state.temp}
+          description={this.state.description}/>
         </div>
 
         <div className='forecast-container'>
