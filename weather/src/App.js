@@ -50,6 +50,7 @@ class App extends React.Component {
           type="text"
           value={this.state.inputValue}
           onChange={this.handleInputChange}></input>
+          <br></br>
           <button 
           type="submit"
           onClick={this.handleTestClick}>search</button>
