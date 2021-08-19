@@ -11,16 +11,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      inputValue: '',
+      //for testing purposes//
+      test: '',
       sunny: false,
-      cloudy: true,
+      cloudy: false,
       rainy: false,
       snowy: false
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTestClick = this.handleTestClick.bind(this);
   }
 
-  handleTestClick = () => {
-    this.setState({snowy: true});
+  handleInputChange = (event) => {
+    this.setState({inputValue: event.target.value})
+  }
+
+  handleTestClick = (event) => {
+    this.setState({rainy: true});
+    this.setState({test: this.state.inputValue});
+    this.setState({inputValue: ''})
   }
 
   render() {
@@ -35,14 +45,19 @@ class App extends React.Component {
         </div>
 
         <div id="search-container">
-          <input id="search-box"></input>
+          <input 
+          id="search-box"
+          type="text"
+          value={this.state.inputValue}
+          onChange={this.handleInputChange}></input>
           <button 
           type="submit"
           onClick={this.handleTestClick}>search</button>
         </div>
 
         <div id="result-container">
-          <Result />
+          <Result 
+          test={this.state.test}/>
         </div>
 
         <div className='forecast-container'>

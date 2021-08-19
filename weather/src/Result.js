@@ -9,7 +9,7 @@ class Result extends React.Component {
     render() {
         return (
             <div
-            className="result-container">this is the result div</div>
+            className="result-container">{this.props.test}</div>
         )
     }
 }
