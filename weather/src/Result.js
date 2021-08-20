@@ -9,7 +9,7 @@ class Result extends React.Component {
     render() {
         return (
             <div
-            className="result-container">
+            className="result-card">
                 <p>{this.props.data.location}</p>
                 <p>{this.props.data.description}</p>
                 <p>{this.props.data.temp}</p>

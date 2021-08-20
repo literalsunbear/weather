@@ -9,7 +9,7 @@ class Forecast extends React.Component {
     render() {
         return (
             <div
-            className="forecast-container">this is the forecast div</div>
+            className="forecast-slider">this is the forecast div</div>
         )
     }
 }

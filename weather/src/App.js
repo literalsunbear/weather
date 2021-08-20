@@ -78,7 +78,6 @@ class App extends React.Component {
           type="text"
           value={this.state.inputValue}
           onChange={this.handleInputChange}></input>
-          <br></br>
           <button 
           type="submit"
           onClick={this.handleSearch}>search</button>
@@ -89,7 +88,7 @@ class App extends React.Component {
           data={this.state.current}/>
         </div>
 
-        <div className='forecast-container'>
+        <div id='forecast-container'>
           <Forecast />
         </div>
 
