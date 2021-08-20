@@ -1,5 +1,5 @@
 import React from 'react';
-import video from './images/clouds_video_compressed.mp4';
+import video from './images/day_clouds_compressed.mp4';
 
 class Cloudy extends React.Component {
     constructor(props) {

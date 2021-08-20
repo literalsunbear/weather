@@ -1,5 +1,5 @@
 import React from 'react';
-import video from './images/rain_video_compressed.mp4';
+import video from './images/day_rain_compressed.mp4';
 
 
 class Rainy extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import video from './images/snow_video_compressed.mp4';
+import video from './images/day_snow_compressed.mp4';
 
 class Snowy extends React.Component {
     constructor(props) {

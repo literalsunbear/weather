@@ -1,5 +1,5 @@
 import React from 'react';
-import video from './images/sun_video_compressed.mp4';
+import video from './images/day_clear_compressed.mp4';
 
 class Sunny extends React.Component {
     constructor(props) {
