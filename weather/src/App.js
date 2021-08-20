@@ -16,11 +16,14 @@ class App extends React.Component {
       current: { // current weather data
         location: '',
         description: '',
+        imgSrc: '',
         temp: '',
         max: '',
         min: '',
         humidity: ''
       },
+      showResult: false,
+      showForecast: false,
       daytime: false,
       sunny: false,
       cloudy: false,
@@ -58,12 +61,15 @@ class App extends React.Component {
         current: {
           location: this.state.data[0].name,
           description: this.state.data[0].weather[0].description,
+          imgSrc : `http://openweathermap.org/img/wn/${this.state.data[0].weather[0].icon}.png`,
           temp: this.state.data[0].main.temp,
           max: this.state.data[0].main.temp_max,
           min: this.state.data[0].main.temp_min,
           humidity: this.state.data[0].main.humidity + "%"
         }
       }))
+
+      this.setState({showResult: true});
   } catch(error) {
     alert(error)
   }
@@ -75,10 +81,14 @@ class App extends React.Component {
       <div className='App'>
 
         <div className='effects-container'>
-          <Sunny sunny={this.state.sunny}/>
-          <Cloudy cloudy={this.state.cloudy}/>
-          <Rainy rainy={this.state.rainy}/>
-          <Snowy snowy={this.state.snowy}/>
+          <Sunny sunny={this.state.sunny}
+          daytime={this.state.daytime}/>
+          <Cloudy cloudy={this.state.cloudy}
+          daytime={this.state.daytime}/>
+          <Rainy rainy={this.state.rainy}
+          daytime={this.state.daytime}/>
+          <Snowy snowy={this.state.snowy}
+          daytime={this.state.daytime}/>
         </div>
 
         <div id="search-container">
@@ -95,7 +105,7 @@ class App extends React.Component {
         <div id="result-container">
           <Result 
           data={this.state.current}
-          daytime={this.state.daytime}/>
+          showResult={this.state.showResult}/>
         </div>
 
         <div id='forecast-container'>

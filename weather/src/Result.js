@@ -7,26 +7,17 @@ class Result extends React.Component {
     }
 
     render() {
+        const resultClass = this.props.showResult ? "result-card-show" : "result-card-hide";
 
-    // TESTING DAYTIME PROP
-    let daytime = '';
-    if(this.props.daytime) {
-        daytime = "true";
-    } else {
-        daytime = "false";
-    }
-    // END TESTING DAYTIME PROP
-    
         return (
             <div
-            className="result-card">
+            className={resultClass}
+            id="result-card">
                 <p>{this.props.data.location}</p>
                 <p>{this.props.data.description}</p>
                 <p>{this.props.data.temp}</p>
-                <p>{this.props.data.max}</p> 
-                <p>{this.props.data.min}</p> 
-                <p>{this.props.data.humidity}</p> 
-                <p>{daytime}</p> 
+                <img
+                src={this.props.data.imgSrc}></img>
             </div>
         )
     }

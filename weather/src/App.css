@@ -21,7 +21,9 @@ body {
   height: 100%;
   width: 100%;
 
-  background: black;
+  background: url('images/night_sky.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* SEARCH CONTAINER ================= */
@@ -72,17 +74,39 @@ body {
 
 /* RESULT CONTAINER ================== */
 #result-container {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 20%;
   width: 100%;
   height: 40%;
-
+  
   color: hotpink;
   border: 2px dotted red;
-
 }
+.result-card-hide,
+.result-card-show {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  width: 50%;
 
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .15));
+
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 1em;
+  box-shadow: 0 0 8px rgba(0,0,0,.25);
+}
+.result-card-hide {
+  opacity: 0;
+  transform: translateX(-200%);
+  transition: all 500ms ease;
+}
+.result-card-show {
+  opacity: 1;
+  transform: translateX(-50%);
+  transition: all 500ms ease;
+}
 /* FORECAST CONTAINER ================ */
 #forecast-container {
   position: absolute;
