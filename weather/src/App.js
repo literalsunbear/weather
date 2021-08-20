@@ -11,9 +11,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: '',
-      data: [],
-      current: {
+      inputValue: '', // input handling
+      data: [], // tmp storage for data traversing/manip
+      current: { // current weather data
         location: '',
         description: '',
         temp: '',
@@ -21,6 +21,7 @@ class App extends React.Component {
         min: '',
         humidity: ''
       },
+      daytime: false,
       sunny: false,
       cloudy: false,
       rainy: false,
@@ -41,23 +42,31 @@ class App extends React.Component {
     const key = '486715e03ac41999dee9a7594ce38c95';
     let url = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=';
 
-    const response = 
-      await fetch(url + key + '&units=imperial');
-    // console.log(await response);
-    // console.log(await response.json());
-    this.setState({data: [await response.json()]});
+    try {
+      const response = 
+        await fetch(url + key + '&units=imperial');
+      this.setState({data: [await response.json()]});
 
-    // set the state of current weather
-    this.setState(prevState => ({
-      current: {
-        location: this.state.data[0].name,
-        description: this.state.data[0].weather[0].description,
-        temp: this.state.data[0].main.temp,
-        max: this.state.data[0].main.temp_max,
-        min: this.state.data[0].main.temp_min,
-        humidity: this.state.data[0].main.humidity + "%"
+      if(this.state.data[0].dt >= this.state.data[0].sys.sunrise) {
+        this.setState({daytime: true});
+      } else {
+        this.setState({daytime: false})
       }
-  }))
+
+      // set the state of current weather
+      this.setState(prevState => ({
+        current: {
+          location: this.state.data[0].name,
+          description: this.state.data[0].weather[0].description,
+          temp: this.state.data[0].main.temp,
+          max: this.state.data[0].main.temp_max,
+          min: this.state.data[0].main.temp_min,
+          humidity: this.state.data[0].main.humidity + "%"
+        }
+      }))
+  } catch(error) {
+    alert(error)
+  }
 
   }
 
@@ -85,7 +94,8 @@ class App extends React.Component {
 
         <div id="result-container">
           <Result 
-          data={this.state.current}/>
+          data={this.state.current}
+          daytime={this.state.daytime}/>
         </div>
 
         <div id='forecast-container'>

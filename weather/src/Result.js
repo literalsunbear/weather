@@ -7,6 +7,16 @@ class Result extends React.Component {
     }
 
     render() {
+
+    // TESTING DAYTIME PROP
+    let daytime = '';
+    if(this.props.daytime) {
+        daytime = "true";
+    } else {
+        daytime = "false";
+    }
+    // END TESTING DAYTIME PROP
+    
         return (
             <div
             className="result-card">
@@ -16,6 +26,7 @@ class Result extends React.Component {
                 <p>{this.props.data.max}</p> 
                 <p>{this.props.data.min}</p> 
                 <p>{this.props.data.humidity}</p> 
+                <p>{daytime}</p> 
             </div>
         )
     }
