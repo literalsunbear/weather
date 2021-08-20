@@ -10,9 +10,12 @@ class Result extends React.Component {
         return (
             <div
             className="result-container">
-                <p>{this.props.location}</p>
-                <p>{this.props.temp}</p> 
-                <p>{this.props.description}</p>
+                <p>{this.props.data.location}</p>
+                <p>{this.props.data.description}</p>
+                <p>{this.props.data.temp}</p>
+                <p>{this.props.data.max}</p> 
+                <p>{this.props.data.min}</p> 
+                <p>{this.props.data.humidity}</p> 
             </div>
         )
     }

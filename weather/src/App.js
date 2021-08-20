@@ -21,11 +21,6 @@ class App extends React.Component {
         min: '',
         humidity: ''
       },
-      //for testing purposes//
-      location: '',
-      temp: '',
-      description: '',
-      //*******************//
       sunny: false,
       cloudy: false,
       rainy: false,
@@ -52,20 +47,18 @@ class App extends React.Component {
     // console.log(await response.json());
     this.setState({data: [await response.json()]});
 
-    // convert all this to an object that can be updated in state
+    // set the state of current weather
+    this.setState(prevState => ({
+      current: {
+        location: this.state.data[0].name,
+        description: this.state.data[0].weather[0].description,
+        temp: this.state.data[0].main.temp,
+        max: this.state.data[0].main.temp_max,
+        min: this.state.data[0].main.temp_min,
+        humidity: this.state.data[0].main.humidity + "%"
+      }
+  }))
 
-
-    const location = this.state.data[0].name;
-    const description = this.state.data[0].weather[0].description;
-    const temp = this.state.data[0].main.temp;
-    const max = this.state.data[0].main.temp_max;
-    const min = this.state.data[0].main.temp_min;
-    const humidity = this.state.data[0].main.humidity;
-
-    this.setState({location: location});
-    this.setState({temp: temp});
-    this.setState({description: description})
-    this.setState({inputValue: ''})
   }
 
   render() {
@@ -93,9 +86,7 @@ class App extends React.Component {
 
         <div id="result-container">
           <Result 
-          location={this.state.location}
-          temp={this.state.temp}
-          description={this.state.description}/>
+          data={this.state.current}/>
         </div>
 
         <div className='forecast-container'>
