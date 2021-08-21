@@ -38,9 +38,6 @@ class App extends React.Component {
   }
 
   handleSearch = async (event) => {
-    // use try/catch to handle errors //
-    //****************************** */
-
     const key = '486715e03ac41999dee9a7594ce38c95';
     let url = 'https://api.openweathermap.org/data/2.5/weather?q=Dallas&appid=';
 
@@ -71,7 +68,7 @@ class App extends React.Component {
       }))
       this.setState({showResult: true});
     } catch(error) {
-      alert(error)
+      alert('Please check your query and try again.')
       }
   }
 
