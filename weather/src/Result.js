@@ -18,6 +18,7 @@ class Result extends React.Component {
                 <p>{this.props.data.temp}</p>
                 <img
                 src={this.props.data.imgSrc}></img>
+                <div className="blur-test-div"></div>
             </div>
         )
     }

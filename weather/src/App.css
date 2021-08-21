@@ -24,6 +24,10 @@ body {
   background: url('images/night_sky.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  filter: 
+    grayscale(75%)
+    contrast(120%)
+    ;
 }
 
 /* SEARCH CONTAINER ================= */
@@ -35,7 +39,7 @@ body {
   height: 20%;
   width: 100%;
 
-  border: 2px dotted pink;
+  /* border: 2px dotted pink; */
 }
 #search-box {
   border: none;
@@ -60,16 +64,16 @@ body {
 }
 
 /* EFFECTS CONTAINER ================ */
-.screen-effect {
+.effects-container {
   position: absolute;
   left: 0;
-  bottom: 200px;
-
-  border: 2px dotted blue;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
-/* sunny screen effect */
-#sunny-screen-effect {
-  filter: brightness(75%);
+.screen-effect {
+  min-width: 100%;
+  min-height: 100%;
 }
 
 /* RESULT CONTAINER ================== */
@@ -81,7 +85,7 @@ body {
   height: 40%;
   
   color: hotpink;
-  border: 2px dotted red;
+  /* border: 2px dotted red; */
 }
 .result-card-hide,
 .result-card-show {
@@ -90,13 +94,16 @@ body {
   left: 50%;
   bottom: 0;
   width: 50%;
+  z-index: 3;
 
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .15));
-
-  border: 2px solid rgba(255, 255, 255, .3);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .05));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(2px);
+  /* border: 2px solid rgba(255, 255, 255, .3); */
   border-radius: 1em;
   box-shadow: 0 0 8px rgba(0,0,0,.25);
 }
+
 .result-card-hide {
   opacity: 0;
   transform: translateX(-200%);
@@ -117,5 +124,5 @@ body {
   width: 100%;
 
   color: green;
-  border: 2px dotted green;
+  /* border: 2px dotted green; */
 }
