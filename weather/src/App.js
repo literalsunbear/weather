@@ -23,11 +23,7 @@ class App extends React.Component {
       showResult: false,
       showForecast: false,
       daytime: false,
-      weatherCode: '',
-      sunny: false,
-      cloudy: false,
-      rainy: false,
-      snowy: false
+      weatherCode: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);

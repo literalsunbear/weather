@@ -1,12 +1,12 @@
 import React from 'react';
-import dayRainy from './images/day_rain_compressed.mp4';
-import nightRainy from './images/night_rain_compressed.mp4';
-import daySnowy from './images/day_snow_compressed.mp4';
-import nightSnowy from './images/night_snow_compressed.mp4';
-import dayClear from './images/day_clear_compressed.mp4';
-import nightClear from './images/night_clear_compressed.mp4';
-import dayCloudy from './images/day_clouds_compressed.mp4';
-import nightCloudy from './images/night_clouds_compressed.mp4';
+import dayRainy from './images/day_rainy.jpg';
+import nightRainy from './images/night_rainy.jpg';
+import daySnowy from './images/day_snowy.jpg';
+import nightSnowy from './images/night_snowy.jpg';
+import dayClear from './images/day_clear.jpg';
+import nightClear from './images/night_clear.jpg';
+import dayCloudy from './images/day_cloudy.jpg';
+import nightCloudy from './images/night_cloudy.jpg';
 
 
 class Effect extends React.Component {
@@ -23,7 +23,7 @@ class Effect extends React.Component {
         if(this.props.daytime) {
             if(code >= 300 && code <= 531) {
                 url = dayRainy;
-            } else if(code >= 600 && code <= 622) {
+            } else if(code >= 600 && code <= 622){
                 url = daySnowy;
             } else if(code == 800) {
                 url = dayClear;
@@ -41,18 +41,19 @@ class Effect extends React.Component {
                 url = nightCloudy;
             }
         }
+
+        console.log(url);
         
 
         return (
-            <video
-            className={screenEffectShow}
-            id="screen-effect-video"
-            src={url}
-            type="video/mp4"
-            autoPlay
-            loop
-            muted>
-            </video>
+            <div
+                className={screenEffectShow}
+                id="screen-effect"
+                style={{
+                    backgroundImage: `url(${url})`
+                }}
+            >
+            </div>
         )
     }
 }

@@ -72,8 +72,10 @@ body {
   bottom: 0;
 }
 .screen-effect {
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   filter: grayscale(10%) contrast(110%) brightness(0.9);
 }
 
