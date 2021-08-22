@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       inputValue: '', // input handling
-      data: [], // tmp storage for data traversing/manip
+      currentData: [], // tmp storage for data traversing/manip
       current: { // current weather data
         location: '',
         description: '',
@@ -19,6 +19,33 @@ class App extends React.Component {
         min: '',
         humidity: ''
       },
+      forecastData: [], // tmp storage for forecast data traverse/manip
+      forecast: [
+        {
+          id: 1,
+          imgSrc: '',
+          max: '',
+          min: ''
+        },
+        {
+          id: 2,
+          imgSrc: '',
+          max: '',
+          min: ''
+        },
+        {
+          id: 3,
+          imgSrc: '',
+          max: '',
+          min: ''
+        },
+        {
+          id: 4,
+          imgSrc: '',
+          max: '',
+          min: ''
+        }
+      ],
       showEffect: false,
       showResult: false,
       showForecast: false,
@@ -46,28 +73,28 @@ class App extends React.Component {
     // try {
     //   const response = 
     //     await fetch(url + this.state.inputValue + '&appid=' + key + '&units=imperial');
-    //   this.setState({data: [await response.json()]});
+    //   this.setState({currentData: [await response.json()]});
 
-    //   if(this.state.data[0].dt >= this.state.data[0].sys.sunrise &&
-    //     this.state.data[0].dt < this.state.data[0].sys.sunset) {
+    //   if(this.state.currentData[0].dt >= this.state.currentData[0].sys.sunrise &&
+    //     this.state.currentData[0].dt < this.state.currentData[0].sys.sunset) {
     //     this.setState({daytime: true});
     //   } else {
     //     this.setState({daytime: false})
     //   }
-    //   this.setState({weatherCode: this.state.data[0].weather[0].id})
+    //   this.setState({weatherCode: this.state.currentData[0].weather[0].id})
     //   this.setState({showEffect: true});
 
 
       // set the state of current weather for result
     //   this.setState( () => ({
     //     current: {
-    //       location: this.state.data[0].name,
-    //       description: this.state.data[0].weather[0].description,
-    //       imgSrc: `http://openweathermap.org/img/wn/${this.state.data[0].weather[0].icon}.png`,
-    //       temp: this.state.data[0].main.temp,
-    //       max: this.state.data[0].main.temp_max,
-    //       min: this.state.data[0].main.temp_min,
-    //       humidity: this.state.data[0].main.humidity + "%"
+    //       location: this.state.currentData[0].name,
+    //       description: this.state.currentData[0].weather[0].description,
+    //       imgSrc: `http://openweathermap.org/img/wn/${this.state.currentData[0].weather[0].icon}.png`,
+    //       temp: this.state.currentData[0].main.temp,
+    //       max: this.state.currentData[0].main.temp_max,
+    //       min: this.state.currentData[0].main.temp_min,
+    //       humidity: this.state.currentData[0].main.humidity + "%"
     //     }
     //   }))
     //   this.setState({showResult: true});
