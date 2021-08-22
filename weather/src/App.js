@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Forecast from './Forecast';
 import Result from './Result';
 import Effect from './Effect';
+import dropdown from './images/expand_icon_white.svg';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,44 +16,24 @@ class App extends React.Component {
         imgSrc: '',
         temp: '',
         max: '',
-        min: '',
-        humidity: ''
+        min: ''
       },
-      forecastData: [], // tmp storage for forecast data traverse/manip
-      forecast: [
-        {
-          id: 1,
-          imgSrc: '',
-          max: '',
-          min: ''
-        },
-        {
-          id: 2,
-          imgSrc: '',
-          max: '',
-          min: ''
-        },
-        {
-          id: 3,
-          imgSrc: '',
-          max: '',
-          min: ''
-        },
-        {
-          id: 4,
-          imgSrc: '',
-          max: '',
-          min: ''
-        }
-      ],
       showEffect: false,
       showResult: false,
       showForecast: false,
       daytime: false,
       weatherCode: ''
     };
+    this.handleDropdown = this.handleDropdown.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleDropdown = (event) => {
+    const dropdown = document.querySelector('.search-nav');
+    const dropdownButton = document.querySelector('.dropdown-button');
+    dropdown.classList.toggle('show');
+    dropdownButton.classList.toggle('show');
   }
 
   handleInputChange = (event) => {
@@ -62,71 +42,63 @@ class App extends React.Component {
 
   handleSearch = async (event) => {
     const key = '486715e03ac41999dee9a7594ce38c95';
-    let url = 'https://api.openweathermap.org/data/2.5/weather?q=';
+    let currentURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
     this.setState({ showResult: false });
     this.setState({ showEffect: false });
-    await new Promise(r => setTimeout(r, 1000)); // sleep function //
+    await new Promise(r => setTimeout(r, 750)); // sleep function //
+    // remove main title for the rest of the session
+    const mainTitle = document.querySelector('.main-title');
+    if(!mainTitle) {
+      //pass;
+    } else {
+      mainTitle.className="main-title-hide";
+    }
 
 
     // ***temp disable for testing*** //
-    // try {
-    //   const response = 
-    //     await fetch(url + this.state.inputValue + '&appid=' + key + '&units=imperial');
-    //   this.setState({currentData: [await response.json()]});
+    try {
+      const currentResponse = 
+        await fetch(currentURL + this.state.inputValue + '&appid=' + key + '&units=imperial');
+      this.setState({ currentData: [await currentResponse.json()] });
 
-    //   if(this.state.currentData[0].dt >= this.state.currentData[0].sys.sunrise &&
-    //     this.state.currentData[0].dt < this.state.currentData[0].sys.sunset) {
-    //     this.setState({daytime: true});
-    //   } else {
-    //     this.setState({daytime: false})
-    //   }
-    //   this.setState({weatherCode: this.state.currentData[0].weather[0].id})
-    //   this.setState({showEffect: true});
+      console.log(this.state.currentData);
 
-
-      // set the state of current weather for result
-    //   this.setState( () => ({
-    //     current: {
-    //       location: this.state.currentData[0].name,
-    //       description: this.state.currentData[0].weather[0].description,
-    //       imgSrc: `http://openweathermap.org/img/wn/${this.state.currentData[0].weather[0].icon}.png`,
-    //       temp: this.state.currentData[0].main.temp,
-    //       max: this.state.currentData[0].main.temp_max,
-    //       min: this.state.currentData[0].main.temp_min,
-    //       humidity: this.state.currentData[0].main.humidity + "%"
-    //     }
-    //   }))
-    //   this.setState({showResult: true});
-    // } catch(error) {
-    //   alert('Please check your query and try again.')
-    // }
-    //*** end temp disable for testing ***/
+      if(this.state.currentData[0].dt >= this.state.currentData[0].sys.sunrise &&
+        this.state.currentData[0].dt < this.state.currentData[0].sys.sunset) {
+        this.setState({ daytime: true });
+      } else {
+        this.setState({ daytime: false })
+      }
+      this.setState({ weatherCode: this.state.currentData[0].weather[0].id });
+      this.setState({ showEffect: true });
 
 
-      //** temp data for testing **/
-      this.setState({ daytime: true });
-      this.setState({ weatherCode: 801 });
-      this.setState ({ showEffect: true });
-      this.setState({ showResult: true })
-
+      // set the state of current weather for result module
       this.setState( () => ({
         current: {
-          location: 'greenville',
-          description: 'some clouds',
-          imgSrc: 'http://openweathermap.org/img/wn/02d@2x.png',
-          temp: '85',
-          max: '89',
-          min: '80',
-          humidity: '80%'
+          location: this.state.currentData[0].name,
+          description: this.state.currentData[0].weather[0].description,
+          imgSrc: `http://openweathermap.org/img/wn/${this.state.currentData[0].weather[0].icon}@2x.png`,
+          temp: Math.round(this.state.currentData[0].main.temp),
+          max: Math.round(this.state.currentData[0].main.temp_max),
+          min: Math.round(this.state.currentData[0].main.temp_min),
         }
-      }));
-      //*** end temp data for testing ***//
+      }))
+      this.setState({showResult: true});
+    } catch(error) {
+      alert('Please check your query and try again.')
+    }
+    // clear input value, remove menu
+    this.handleDropdown();
+    this.setState({ inputValue: '' }); 
   }
 
   render() {
     return (
       <div className='App'>
+        <h1
+        className="main-title">how's the weather?</h1>
 
         <div className='effects-container'>
           <Effect
@@ -137,24 +109,31 @@ class App extends React.Component {
         </div>
 
         <div id="search-container">
-          <input 
-          id="search-box"
-          type="text"
-          value={this.state.inputValue}
-          onChange={this.handleInputChange}></input>
-          <button 
-          type="submit"
-          onClick={this.handleSearch}>search</button>
+          <div className="search-nav">
+            <input 
+            id="search-box"
+            type="text"
+            value={this.state.inputValue}
+            onChange={this.handleInputChange}
+            placeholder="city, state, country"
+            ></input>
+            <button 
+            type="button"
+            onClick={this.handleSearch}>search</button>
+            <img 
+            className="dropdown-button"
+            src={dropdown}
+            onClick={this.handleDropdown}
+            alt="dropdown icon"
+            ></img>
+          </div>
+          
         </div>
 
         <div id="result-container">
           <Result 
           data={this.state.current}
           showResult={this.state.showResult}/>
-        </div>
-
-        <div id='forecast-container'>
-          <Forecast />
         </div>
 
       </div>

@@ -10,16 +10,15 @@ class Result extends React.Component {
         const resultClass = this.props.showResult ? "result-card result-card-show" : "result-card result-card-hide";
 
         return (
-            <div
-            className={resultClass}
-            id="result-card">
+
+                <div
+                className={resultClass}
+                id="result-card">
                 <div id="result-card-content">
                     <div id="card-left">
                         <img
                         src={this.props.data.imgSrc}
                         alt="weather icon"></img>
-                        
-                        {/* <p id="current-description">{this.props.data.description}</p> */}
 
                         <div id="temp-range">
                             <div>
@@ -36,10 +35,9 @@ class Result extends React.Component {
                     <div id="card-right">
                         <p id="current-temp">{this.props.data.temp}&#176;</p>
                     </div>
-
-                </div>
+                    <h1 id="location">{this.props.data.location}</h1>
+                </div>         
             </div>
-
         )
     }
 }

@@ -37,13 +37,57 @@ body {
 /* SEARCH CONTAINER ================= */
 #search-container {
   position: absolute;
-  z-index: 3;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   top: 0;
   left: 0;
-  height: 20%;
+  height: 100%;
   width: 100%;
+  z-index: 3;
+
 
   /* border: 2px dotted pink; */
+}
+.search-nav,
+.search-nav.show {
+  transition: all 500ms ease-out;
+}
+.search-nav {
+  position: absolute;
+  /* 80px nav btn, 40px search btn, 5px margin, 4px border*/
+  top: -129px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0, 0));
+}
+.search-nav.show {
+  top: 0;
+}
+.search-nav button {
+  width: 120px;
+  height: 40px;
+  padding: 0 !important;
+  margin-top: 5px;
+  background: rgba(255,255,255,.5);
+  font-family: 'Raleway';
+  font-weight: 500;
+}
+.dropdown-button,
+.dropdown-button.show {
+  opacity: .75;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,.15));
+  -webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,.25));
+  transition: all 250ms ease;
+}
+.dropdown-button {
+  height: 80px;
+  margin: 0 auto;
+}
+.dropdown-button.show {
+  transform: scaleY(-1);
 }
 #search-box {
   border: none;
@@ -52,13 +96,16 @@ body {
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 4px solid rgba(255, 255, 255, .75);
+  border-bottom: 4px solid rgba(255, 255, 255, .5);
   width: 100%;
 
   font-size: 4em;
   font-weight: 300;
   color: rgba(255, 255, 255, .75);
   text-shadow: 2px 2px 6px rgba(0,0,0,.15);
+}
+#search-box::placeholder {
+  color: rgba(255, 255, 255, .15);
 }
 #search-container button {
   outline: none;
@@ -106,13 +153,13 @@ body {
 .result-card-hide,
 .result-card-show {
   position: absolute;
-  top: 33%;
+  top: 50%;
   left: 50%;
   bottom: 0;
   width: 40%;
   width: clamp(320px, 40%, 400px);
   height: clamp(320px, 30%, 200px);
-  transform: translate(-50%, -33%);
+  transform: translate(-50%, -50%);
 
   z-index: 3;
 
@@ -160,29 +207,32 @@ body {
   font-weight: 300;
   margin: auto 0;
 }
-
-
-/* FORECAST CONTAINER ================ */
-#forecast-container {
+#location {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  height: 100%;
-  width: 100%;
-
-  color: green;
-  border: 2px dotted green;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
 }
 
-.forecast-slider {
+.main-title {
   position: absolute;
-  bottom: 0;
-
-  width: 50%;
-  height: 200px;
-
-  border: 1px dotted greenyellow;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 4em;
+  color: rgba(255,255,255,.8);
+  text-shadow: 2px 2px 4px rgba(0,0,0,.15);
+  opacity: 1;
+  transition: all 500ms ease;
+}
+.main-title-hide {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 4em;
+  opacity: 0;
+  transition: all 500ms ease;
 }
