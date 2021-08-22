@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: '', // input handling
+      inputValue: '', 
       currentData: [], // tmp storage for data traversing/manip
       current: { // current weather data
         location: '',
