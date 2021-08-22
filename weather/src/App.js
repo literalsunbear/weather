@@ -3,6 +3,7 @@ import './App.css';
 import Result from './Result';
 import Effect from './Effect';
 import dropdown from './images/expand_icon_white.svg';
+import logo from './images/openweatherlogo.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -139,6 +140,12 @@ class App extends React.Component {
           showResult={this.state.showResult}/>
         </div>
 
+        <div id="footer">
+          <p>built to spec per The Odin Project thanks to </p>
+          <a
+          href="https://openweathermap.org/"
+          target="_blank"><img src={logo}></img></a>
+        </div>
       </div>
     )
   }
