@@ -13,14 +13,33 @@ class Result extends React.Component {
             <div
             className={resultClass}
             id="result-card">
-                <p>{this.props.data.location}</p>
-                <p>{this.props.data.description}</p>
-                <p>{this.props.data.temp}</p>
-                <img
-                src={this.props.data.imgSrc}
-                alt="weather icon"></img>
-                <div className="blur-test-div"></div>
+                <div id="result-card-content">
+                    <div id="card-left">
+                        <img
+                        src={this.props.data.imgSrc}
+                        alt="weather icon"></img>
+                        
+                        {/* <p id="current-description">{this.props.data.description}</p> */}
+
+                        <div id="temp-range">
+                            <div>
+                                <p className="underline">hi</p>
+                                <p>{this.props.data.max}&#176;</p>
+                            </div>
+                            <div>
+                                <p className="underline">lo</p>
+                                <p>{this.props.data.min}&#176;</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="card-right">
+                        <p id="current-temp">{this.props.data.temp}&#176;</p>
+                    </div>
+
+                </div>
             </div>
+
         )
     }
 }

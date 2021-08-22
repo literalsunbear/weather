@@ -27,7 +27,11 @@ body {
   filter: 
     grayscale(75%)
     contrast(120%)
+    brightness(.9);
     ;
+
+    font-family: 'Raleway';
+
 }
 
 /* SEARCH CONTAINER ================= */
@@ -51,7 +55,6 @@ body {
   border-bottom: 4px solid rgba(255, 255, 255, .75);
   width: 100%;
 
-  font-family: 'Raleway';
   font-size: 4em;
   font-weight: 300;
   color: rgba(255, 255, 255, .75);
@@ -78,17 +81,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   filter: grayscale(10%) contrast(110%) brightness(0.9);
+  transition: all 750ms ease;
 }
 .screen-effect-show {
   opacity: 1;
-
-  transition: all 250ms ease;
 }
-
 .screen-effect-hide {
   opacity: 0;
-
-  transition: all 250ms ease;
 }
 /* RESULT CONTAINER ================== */
 #result-container {
@@ -99,7 +98,7 @@ body {
   height: 40%;
   
   text-transform: lowercase;
-  color: hotpink;
+  color: white;
   /* border: 2px dotted red; */
 }
 .result-card-hide,
@@ -108,7 +107,11 @@ body {
   top: 0;
   left: 50%;
   bottom: 0;
-  width: 50%;
+  width: 40%;
+  width: clamp(320px, 40%, 400px);
+  height: clamp(320px, 30%, 200px);
+  transform: translateX(-50%);
+
   z-index: 3;
 
   background-image: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .05));
@@ -117,19 +120,45 @@ body {
   /* border: 2px solid rgba(255, 255, 255, .3); */
   border-radius: 1em;
   box-shadow: 2px 2px 4px rgba(0,0,0,.25);
+
+  transition: all 750ms ease-out;
 }
 .result-card-show {
-  left: 50%;
   opacity: 1;
-  transform: translateX(-50%);
-  transition: all 1s ease-out;
 }
 .result-card-hide {
-  left: 0;
   opacity: 0;
-  transform: translateX(-200%);
-  transition: all 1s ease-out;
 }
+/* card content styling ============== */
+#result-card-content {
+  margin: 1em;
+  display: flex;
+}
+#card-left {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.8em;
+}
+#temp-range {
+  display: flex;
+  justify-content: space-around;
+}
+.underline {
+  text-decoration: underline;
+}
+#card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+#current-temp {
+  font-size: 8em;
+  margin: auto 0;
+}
+
+
 /* FORECAST CONTAINER ================ */
 #forecast-container {
   position: absolute;
