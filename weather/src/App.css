@@ -199,6 +199,10 @@ body {
   justify-content: space-around;
   font-size: 1.8em;
 }
+#result-card img {
+  height: 100px;
+  width: 100px;
+}
 #current-temp {
   font-size: 6em;
   font-weight: 300;
