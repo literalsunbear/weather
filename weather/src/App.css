@@ -57,7 +57,7 @@ body {
 .search-nav {
   position: absolute;
   /* 80px nav btn, 40px search btn, 5px margin, 4px border*/
-  top: -8em;
+  top: -9em;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -78,6 +78,10 @@ body {
 }
 .dropdown-button,
 .dropdown-button.show {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
   opacity: .5;
   filter: drop-shadow(2px 2px 4px rgba(0,0,0,.15));
   -webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,.25));
@@ -89,7 +93,7 @@ body {
   margin: 0 auto;
 }
 .dropdown-button.show {
-  transform: scaleY(-1);
+  transform: translate(-50%) scaleY(-1);
 }
 #search-box {
   border: none;
@@ -272,7 +276,7 @@ body {
 
 @media only screen and (max-width: 500px) {
   .search-nav {
-    top: -5.75em;
+    top: -7em;
   }
 
   #search-box {
