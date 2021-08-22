@@ -16,7 +16,7 @@ class Effect extends React.Component {
     }
 
     render() {
-        const screenEffectShow = this.props.showEffect ? "screen-effect display-block" : "screen-effect display-none";
+        const screenEffectShow = this.props.showEffect ? "screen-effect screen-effect-show" : "screen-effect screen-effect-hide";
         const code = parseInt(this.props.weatherCode);
         var url = '';
 
@@ -25,7 +25,7 @@ class Effect extends React.Component {
                 url = dayRainy;
             } else if(code >= 600 && code <= 622){
                 url = daySnowy;
-            } else if(code == 800) {
+            } else if(code === 800) {
                 url = dayClear;
             } else if(code > 800) {
                 url = dayCloudy;
@@ -35,15 +35,12 @@ class Effect extends React.Component {
                 url = nightRainy;
             } else if(code >= 600 && code <= 622) {
                 url = nightSnowy;
-            } else if(code == 800) {
+            } else if(code === 800) {
                 url = nightClear;
             } else if(code > 800) {
                 url = nightCloudy;
             }
-        }
-
-        console.log(url);
-        
+        }        
 
         return (
             <div

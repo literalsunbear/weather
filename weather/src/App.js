@@ -37,6 +37,9 @@ class App extends React.Component {
     const key = '486715e03ac41999dee9a7594ce38c95';
     let url = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
+    this.setState({showResult: false});
+    await new Promise(r => setTimeout(r, 500)); // sleep function //
+
     try {
       const response = 
         await fetch(url + this.state.inputValue + '&appid=' + key + '&units=imperial');

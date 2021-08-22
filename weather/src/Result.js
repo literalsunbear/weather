@@ -7,7 +7,7 @@ class Result extends React.Component {
     }
 
     render() {
-        const resultClass = this.props.showResult ? "result-card-show" : "result-card-hide";
+        const resultClass = this.props.showResult ? "result-card result-card-show" : "result-card result-card-hide";
 
         return (
             <div
@@ -17,7 +17,8 @@ class Result extends React.Component {
                 <p>{this.props.data.description}</p>
                 <p>{this.props.data.temp}</p>
                 <img
-                src={this.props.data.imgSrc}></img>
+                src={this.props.data.imgSrc}
+                alt="weather icon"></img>
                 <div className="blur-test-div"></div>
             </div>
         )

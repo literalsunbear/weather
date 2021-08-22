@@ -71,14 +71,25 @@ body {
   top: 0;
   bottom: 0;
 }
-.screen-effect {
+.screen-effect-show,
+.screen-effect-hide {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   filter: grayscale(10%) contrast(110%) brightness(0.9);
 }
+.screen-effect-show {
+  opacity: 1;
 
+  transition: all 250ms ease;
+}
+
+.screen-effect-hide {
+  opacity: 0;
+
+  transition: all 250ms ease;
+}
 /* RESULT CONTAINER ================== */
 #result-container {
   position: relative;
@@ -87,6 +98,7 @@ body {
   width: 100%;
   height: 40%;
   
+  text-transform: lowercase;
   color: hotpink;
   /* border: 2px dotted red; */
 }
@@ -106,16 +118,17 @@ body {
   border-radius: 1em;
   box-shadow: 2px 2px 4px rgba(0,0,0,.25);
 }
-
-.result-card-hide {
-  opacity: 0;
-  transform: translateX(-200%);
-  transition: all 500ms ease;
-}
 .result-card-show {
+  left: 50%;
   opacity: 1;
   transform: translateX(-50%);
-  transition: all 500ms ease;
+  transition: all 1s ease-out;
+}
+.result-card-hide {
+  left: 0;
+  opacity: 0;
+  transform: translateX(-200%);
+  transition: all 1s ease-out;
 }
 /* FORECAST CONTAINER ================ */
 #forecast-container {
