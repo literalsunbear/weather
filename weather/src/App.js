@@ -39,11 +39,11 @@ class App extends React.Component {
 
   handleSearch = async (event) => {
     const key = '486715e03ac41999dee9a7594ce38c95';
-    let url = 'https://api.openweathermap.org/data/2.5/weather?q=Dallas&appid=';
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
     try {
       const response = 
-        await fetch(url + key + '&units=imperial');
+        await fetch(url + this.state.inputValue + '&appid=' + key + '&units=imperial');
       this.setState({data: [await response.json()]});
 
       if(this.state.data[0].dt >= this.state.data[0].sys.sunrise &&
