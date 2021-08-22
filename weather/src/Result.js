@@ -15,26 +15,28 @@ class Result extends React.Component {
                 className={resultClass}
                 id="result-card">
                 <div id="result-card-content">
-                    <div id="card-left">
+                    <div id="card-top">
                         <img
                         src={this.props.data.imgSrc}
                         alt="weather icon"></img>
+                        <p>{this.props.data.description}</p>
+                    </div>
 
+                    <div id="card-middle">
+                        <p id="current-temp">{this.props.data.temp}&#176;</p>
                         <div id="temp-range">
-                            <div>
+                            <div className="range">
                                 <p className="underline">hi</p>
                                 <p>{this.props.data.max}&#176;</p>
                             </div>
-                            <div>
+                            <div className="range">
                                 <p className="underline">lo</p>
                                 <p>{this.props.data.min}&#176;</p>
                             </div>
                         </div>
                     </div>
 
-                    <div id="card-right">
-                        <p id="current-temp">{this.props.data.temp}&#176;</p>
-                    </div>
+                    
                     <h1 id="location">{this.props.data.location}</h1>
                 </div>         
             </div>

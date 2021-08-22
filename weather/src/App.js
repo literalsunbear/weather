@@ -41,12 +41,16 @@ class App extends React.Component {
   }
 
   handleSearch = async (event) => {
+    // remove nav
+    this.handleDropdown();
+
     const key = '486715e03ac41999dee9a7594ce38c95';
     let currentURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
     this.setState({ showResult: false });
     this.setState({ showEffect: false });
     await new Promise(r => setTimeout(r, 750)); // sleep function //
+
     // remove main title for the rest of the session
     const mainTitle = document.querySelector('.main-title');
     if(!mainTitle) {
@@ -89,8 +93,7 @@ class App extends React.Component {
     } catch(error) {
       alert('Please check your query and try again.')
     }
-    // clear input value, remove menu
-    this.handleDropdown();
+    // clear input value
     this.setState({ inputValue: '' }); 
   }
 
@@ -119,7 +122,7 @@ class App extends React.Component {
             ></input>
             <button 
             type="button"
-            onClick={this.handleSearch}>search</button>
+            onClick={this.handleSearch}>go</button>
             <img 
             className="dropdown-button"
             src={dropdown}
